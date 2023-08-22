@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas
 
 st.set_page_config(layout="wide")
 
@@ -27,7 +28,14 @@ thrive without the burdens of technical intricacies. Below you can find some of
 websites and applications I've developed. Sign up below to get started!
 """
 st.write(signup)
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    pass
 
+col3, col4 = st.columns(2)
+
+df = pandas.read_csv('data.csv', sep=';')
+with col3:
+    for index, row in df[:10].iterrows():
+        col3.header(row["title"])
+
+with col4:
+    for index, row in df[10:].iterrows():
+        col4.header(row["title"])
