@@ -1,5 +1,10 @@
 import streamlit as st
 import pandas
+import os
+
+def main():
+    password = os.getenv("PASSWORD")
+    print(f"Password from environment variable: {password}")
 
 st.set_page_config(layout="wide")
 
@@ -45,3 +50,6 @@ with col4:
         st.write(row["description"])
         st.image(f'./images/{row["image"]}')
         st.write(f"[Source Code]({row['url']})")
+
+if __name__ == "__main__":
+    main()
